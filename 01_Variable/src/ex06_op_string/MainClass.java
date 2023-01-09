@@ -28,8 +28,7 @@ public class MainClass {
 		// String str = String.value0f(a;
 		// 하지만 개발자들은 잘 안씀
 
-		System.out.println(str1);
-		System.out.println(a==str);
+		System.out.println(str);
 		
 	}
 	
