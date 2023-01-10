@@ -27,7 +27,7 @@ public class Ex01_array {
 	  
 	 */
 	
-	public static void ex01() {
+	public static void ex01() {// x)
 		
 		
 		//배열 선언
@@ -45,7 +45,7 @@ public class Ex01_array {
 						//		ㄴ인덱스(i) i=0 i<5
 	}
 	
-	public static void ex02() { //ex01 사용안함!!! ex02로 연습하기
+	public static void ex02() { //ex01x) ex02로 연습하기
 		
 		//for문 이용
 		// 배열의 선언 + 생성(동시에 합쳐서)
@@ -79,7 +79,7 @@ public class Ex01_array {
 		
 		// 배열 순회
 		for(int i = 0; i < arr.length; i++)
-			//                   ㄴ 이게 5란 뜻
+			//                   ㄴ 이게 5란 뜻(배열의 길이)
 			System.out.println(arr[i]);
 		
 	}
@@ -175,7 +175,7 @@ public class Ex01_array {
 		
 	}
 	
-	public static void ex08() { // 연습
+	public static void ex08() { // 연습x)
 		
 		String[] weekName = {"토","일","월","화","수","목","금"};
 		
@@ -186,7 +186,7 @@ public class Ex01_array {
 	
 	}
 	
-	public static void ex09() { // 연습
+	public static void ex09() { // 연습x)
 		
 	String[] season = {"겨울","봄","여름","가을"};
 	
