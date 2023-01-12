@@ -19,6 +19,7 @@ public class CoffeeMachine { // 어려웡 일단 보류
 			CoffeeAndChange cnc = new CoffeeAndChange();
 			cnc.change = money;
 			return cnc;
+ //					ㄴ MainClass > coffeeMachine.buyCoffee(1000, 1)			
 			
 		}
 		

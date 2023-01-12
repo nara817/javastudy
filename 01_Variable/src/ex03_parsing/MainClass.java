@@ -13,6 +13,7 @@ public class MainClass {
 		
 		// String > int로 변환
 		int score = Integer.parseInt(strScore);
+		//           ㄴ class / class로 호출하는 메소드 / class메소드
 		System.out.println(score);
 
 		// String > long 으로 변환

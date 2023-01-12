@@ -18,7 +18,7 @@ public class MainClass {
 	public static void ex02() {
 		
 		CoffeeMachine coffeeMachine = new CoffeeMachine(); // 커피자판기 만들기
-		
+		 
 		CoffeeAndChange coffeeAndChange = coffeeMachine.buyCoffee(1000, 1); // 커피사먹기 1000주고1번째 커피 먹기
 		System.out.println(coffeeAndChange.coffee);
 		System.out.println(coffeeAndChange.change);

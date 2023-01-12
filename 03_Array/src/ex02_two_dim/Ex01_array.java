@@ -82,6 +82,7 @@ public class Ex01_array {
 			}
 			System.out.println();
 		}
+		
 	}
 
 	public static void main(String[] args) {
