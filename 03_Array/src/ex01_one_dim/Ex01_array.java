@@ -63,10 +63,10 @@ public class Ex01_array {
 		int length = 5;
 		
 		// 배열 선언 + 생성
-		int[] arr=new int[length];
+		int[] arr = new int[length];
 		
 		// 배열 순회
-		for(int i=0; i < length; i++) {
+		for(int i = 0; i < length; i++) {
 			System.out.println(arr[i]);
 		}
 		

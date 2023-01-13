@@ -1,4 +1,4 @@
-package practice;
+package practice01_BankAccount;
 
 public class BankAccount {
 	
@@ -41,7 +41,8 @@ public class BankAccount {
 }
 	// 조회
 	public void inquiry() {
-		System.out.println("계좌번호 : " + accNO);
+		System.out.println("계좌번호 : " + accNo);
 		System.out.println("잔액 : " + balance + "원");
 	}
+	
 }

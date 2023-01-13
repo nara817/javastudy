@@ -6,10 +6,10 @@ public class MainClass {
 		
 		Hybrid car = new Hybrid();
 		
-		car.drive(); // 달린다.
-		car.charge(); // 충전한다.
-		car.addOil(); // 기름을 넣는다.
-
+		car.drive();   // 달린다.
+		car.charge();  // 충전한다.
+		car.addOil();  // 기름을 넣는다.
+		
 	}
 
 }
