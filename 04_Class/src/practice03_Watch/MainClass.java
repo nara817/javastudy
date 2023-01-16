@@ -11,7 +11,6 @@ public class MainClass {
 		watch.addSecond(3661);	// 3661초 후(1시간 1분 1초)
 		
 		watch.see();  // 19시 17분 31초
-		
 
 	}
 

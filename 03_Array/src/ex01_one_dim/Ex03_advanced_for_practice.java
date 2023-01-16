@@ -18,11 +18,14 @@ public class Ex03_advanced_for_practice {
 				max = n;
 			}
 		}
-		
+		System.out.println(total);
+		System.out.println(max);
+		System.out.println(min);
 	}
+	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		ex01();
 
 	}
 

@@ -5,7 +5,7 @@ public class Ex01_array_practice {
 	public static void ex01() {
 
 		// 배열 선언+생성
-		int[] arr = new in[5]; // 배열의 길이가 5
+		int[] arr = new int[5]; // 배열의 길이가 5
 
 		// 배열의 요소 순회
 		for (int i = 0; i < 5; i++) {
