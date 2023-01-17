@@ -1,6 +1,6 @@
 package ex01_String;
 
-public class MainClass {
+public class Ex01_String {
 	
 	public static void literal() {
 		
@@ -327,14 +327,14 @@ public class MainClass {
 		// 숫자 형식 지정하기
 		int number = 1000;
 		
-		System.out.println(String.format("%", number)); // % : 8진수로 표시하시오.
-		System.out.println(String.format("%d", number)); // %d : 10진수로 표시하시오.
-		System.out.println(String.format("%x", number)); // %x : 16진수로 표시하시오.(0~9,a,b,c,e,d,f)
-		System.out.println(String.format("%X", number)); // %X : 16진수로 표시하시오.(0~9,A,B,C,E,D,F)
+		System.out.println(String.format("%o", number));  // %o : 8진수로 표시하시오
+		System.out.println(String.format("%d", number));  // %d : 10진수로 표시하시오.
+		System.out.println(String.format("%x", number));  // %x : 16진수로 표시하시오.(0~9, a, b, c, d, e, f)
+		System.out.println(String.format("%X", number));  // %X : 16진수로 표시하시오.(0~9, A, B, C, D, E, F)
 		
 		// 문자열 형식 지정하기
 		String str = "hi";
-		System.out.println(String.format("%s", str)); // %s : 문자열로 표시하시오.
+		System.out.println(String.format("%s", str));  // %s : 문자열로 표시하시오.
 		
 		// 출력 폭 지정하기
 		System.out.println(String.format("%10d", number)); // %10d : 10자리로 표시하시오. 숫자는 오른쪽에 표시하시오.
@@ -375,7 +375,6 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		format();
-
 	}
 
 }
