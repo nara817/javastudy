@@ -1,13 +1,11 @@
-package practice3_Cart;
+package practice05_Cart;
 
 public class Product {
 
-	
 	private int prodNo;
 	private String prodName;
 	private int prodPrice;
 	
-	//1 생성자 
 	public Product(int prodNo, String prodName, int prodPrice) {
 		super();
 		this.prodNo = prodNo;
@@ -15,7 +13,6 @@ public class Product {
 		this.prodPrice = prodPrice;
 	}
 
-	//2 getter와 setter
 	public int getProdNo() {
 		return prodNo;
 	}
@@ -39,10 +36,5 @@ public class Product {
 	public void setProdPrice(int prodPrice) {
 		this.prodPrice = prodPrice;
 	}
-
-
-
-	
-	
 	
 }
