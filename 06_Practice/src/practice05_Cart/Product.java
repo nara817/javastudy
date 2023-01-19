@@ -6,6 +6,7 @@ public class Product {
 	private String prodName;
 	private int prodPrice;
 	
+	// 생성자 자동생성(generate constructor using fields)
 	public Product(int prodNo, String prodName, int prodPrice) {
 		super();
 		this.prodNo = prodNo;
