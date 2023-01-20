@@ -82,7 +82,7 @@ public class MainCLass {
 	}
 
 	public static void main(String[] args) {
-		ex04();
+		ex02();
 
 	}
 

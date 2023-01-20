@@ -160,6 +160,7 @@ public class MainClass {
 			System.out.println(Arrays.toString(a));			
 		}
 	}
+		}
 			
 	public static void main(String[] args) {
 		ex07();
