@@ -8,7 +8,7 @@ import java.io.IOException;
 
 
 
-public class MainClass {
+public class MainClass4 {
 	
 	/*
 	 ex01 더이상 보여줄 문자가 없을때 멈춤 2풀이
@@ -61,6 +61,9 @@ public class MainClass {
 		}
 
 	}
+	
+	
+	
 	public static void ex02() {
 		
 		File dir = new File("C:" + File.separator + "storage");
@@ -103,7 +106,8 @@ public class MainClass {
 			}
 		}
 
-	}	
+	}
+	
 	public static void ex02_1() {
 		File dir = new File("C:" + File.separator + "storage");
 		if(dir.exists() == false) {
@@ -154,12 +158,6 @@ public class MainClass {
 	}
 	
 	public static void ex03() { 
-		
-		/*
-			BufferReader의 장점
-			1. 속도가 빠르다.
-			2.  readLine 메소드를 사용 할 수 있다.(한줄씩만 읽어 들이는(전체에서 부분만)ReadLine 메소드)
-		*/
 
 		File dir = new File("C:" + File.separator + "storage");
 		if (dir.exists() == false) {
@@ -173,13 +171,15 @@ public class MainClass {
 		try {
 
 			br = new BufferedReader(new FileReader(file)); // 속도 향상 스트림
-			
-			String line = null;
+
+			char[] cbuf = new char[5];
+			int readCount = 0;
+
 			StringBuilder sb = new StringBuilder();
-			while((line = br.readLine()) != null) { // -1이 아닌 null / 글자 배열이 정해진게x
-				sb.append(line);
+
+			while ((readCount = br.read(cbuf)) != -1) {
+				sb.append(cbuf, 0, readCount);
 			}
-			
 			System.out.println(sb.toString());
 
 		} catch (IOException e) {
@@ -195,8 +195,6 @@ public class MainClass {
 		}
 
 	}
-	
-
 	public static void main(String[] args) {
 		ex03();
 
