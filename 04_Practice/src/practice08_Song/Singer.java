@@ -2,8 +2,8 @@ package practice08_Song;
 
 public class Singer {
 
-	private String name;
-	private Song[] songs;
+	private String name; // 가수 이름
+	private Song[] songs; // 노래 제목
 	private int idx;  // songs 배열의 인덱스이자 저장된 노래의 개수
 	
 	public Singer(String name, int count) {  // 가수 이름과 노래 개수
