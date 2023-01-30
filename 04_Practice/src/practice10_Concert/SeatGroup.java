@@ -8,7 +8,7 @@ public class SeatGroup {
 	private Seat[] seats;
 	private Scanner sc;
 	
-	public SeatGroup(String seatType, int count) {  // new SeatGroup("S", 20) : S석이 20개 있다.
+	public SeatGroup(String seatType, int count) {  // new SeatGroup("S", 20) : S석이 20개 있다.// 
 		this.seatType = seatType;
 		seats = new Seat[count];
 		for(int i = 0; i < count; i++) {
@@ -22,7 +22,7 @@ public class SeatGroup {
 		reserveInfo();
 		// 시트번호는 1부터 시작
 		System.out.print("예약할 시트번호 >>> ");
-		int seatNo = sc.nextInt();
+		int seatNo = sc.nextInt(); // int 입력 받을땐 nextInt
 		if(seatNo < 1 || seatNo > seats.length) {
 			System.out.println(seatNo + "번 좌석은 없는 좌석입니다.");
 			return false;
@@ -35,7 +35,7 @@ public class SeatGroup {
 		// 예약 진행
 		System.out.print("예약자 이름 >>> ");
 		String name = sc.next();
-		seats[seatNo - 1].setName(name);
+		seats[seatNo - 1].setName(name); // 예약 진행되었으니, -1
 		System.out.println(seatNo + "번 좌석 예약이 완료되었습니다.");
 		return true;
 	}
@@ -62,12 +62,12 @@ public class SeatGroup {
 	public void reserveInfo() {
 		System.out.println("[" + seatType + "]");
 		for(int i = 0; i < seats.length; i++) {
-			if(seats[i].isOccupied()) {
-				System.out.print(seats[i].getName().substring(0, 1) + "* ");
+			if(seats[i].isOccupied()) { // 예약된 좌석
+				System.out.print(seats[i].getName().substring(0, 1) + "* ");// ??
 			} else {
-				System.out.print((i + 1) + (i < 9 ? "   " : "  "));
+				System.out.print((i + 1) + (i < 9 ? "   " : "  "));// ??
 			}
-			if((i + 1) % 10 == 0) {
+			if((i + 1) % 10 == 0) { // ??
 				System.out.println();
 			}
 		}

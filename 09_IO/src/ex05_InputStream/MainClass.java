@@ -22,20 +22,20 @@ public class MainClass {
 		
 		File file = new File("C:" + File.separator + "storage", "ex01.bin"); //(경로, 파일명)
 		
-		FileInputStream fis = null;
+		FileInputStream fis = null; // fis 초기화
 		
 		try {
 			
-			fis = new FileInputStream(file);
-			
+			fis = new FileInputStream(file); // fis 연결하는 스트림(통로)을 생성
+		
 			// 입력 단위
 			// 1. int : 1개 입력
 			// 2. byte[] : 2개 이상
 			
 			int c = 0;
-			StringBuilder sb = new StringBuilder();
+			StringBuilder sb = new StringBuilder(); // StringBuilder 변경 가능한 문자열을 만들어줌
 			while ((c = fis.read()) != -1) {
-				sb.append((char) c);
+				sb.append((char) c); // append   StringBuilder 클래스의 Append 함수를 이용하여 builder 객체에 문자열을 이어붙인 후 꺼내는 방법
 			}
 			System.out.println(sb.toString());
 		} catch (IOException e) {
