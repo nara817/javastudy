@@ -1,4 +1,4 @@
-package practice10_Concert;
+package practice101_Concert;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -16,7 +16,7 @@ public class ConcertHall {
 		this.hallName = hallName;
 		seatGroups = new SeatGroup[seatTypes.length];  // S, R, A석이 있음을 의미
 		for(int i = 0; i < seatGroups.length; i++) {
-			seatGroups[i] = new SeatGroup(seatTypes[i], seatCount[i]); //좌석 만들어서 i번째에 담아줌
+			seatGroups[i] = new SeatGroup(seatTypes[i], seatCount[i]);
 		}
 		sc = new Scanner(System.in);
 	}
@@ -41,12 +41,12 @@ public class ConcertHall {
 	
 	// 예약 취소
 	public void cancel() {
-		System.out.print("취소할 좌석 타입 입력" + Arrays.toString(seatTypes) + " >>> "); // seatTypes 배열의 값을 문자열로 변환
+		System.out.print("취소할 좌석 타입 입력" + Arrays.toString(seatTypes) + " >>> ");
 		String seatType = sc.next();
 		for(int i = 0; i < seatTypes.length; i++) {
-			if(seatType.equals(seatTypes[i])) { // seatTypes = {"S", "R", "A"};
+			if(seatType.equals(seatTypes[i])) {
 				seatGroups[i].cancel();  // boolean 반환값은 사용하지 않았음
-				return; 
+				return;
 			}
 		}
 		System.out.println(seatType + "타입은 없는 타입입니다.");

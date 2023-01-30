@@ -8,7 +8,7 @@ public class Person {
 	}
 	
 	// 산책 하기
-	// 주의. public void walk(Pet pet)이 아님을 주의할 것.
+	// 주의. public void walk(Pet pet)이 아님을 주의할 것. // 뱀이랑도 산책을 하게됨
 	public void walk(Walkable pet) {
 		System.out.println(((Pet) pet).getPetName() + "와 산책");
 	}
