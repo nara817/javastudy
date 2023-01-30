@@ -68,4 +68,9 @@ public class Person implements Serializable {
 		this.isAlive = isAlive;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Person [name=%s, age=%s, height=%s, isAlive=%s]", name, age, height, isAlive);
+	}
+
 }

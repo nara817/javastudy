@@ -32,7 +32,7 @@ public class MainClass {
 		}
 
 		// 파일작업
-		File file = new File(dir, "ex.01txt");
+		File file = new File(dir, "ex01.txt");
 
 		// 출력 스트림 선언
 		FileWriter fw = null;
