@@ -66,7 +66,7 @@ public class SeatGroup {
 		}
 		// 예약 진행
 		String name = JOptionPane.showInputDialog("예약자 성함을 입력하세요.");
-		seats[seatNo - 1].setName(name);
+		seats[seatNo - 1].reserve(name);
 		System.out.println(seatNo + "번 좌석 예약이 성공했습니다.");
 		return true;
 	}
@@ -77,7 +77,8 @@ public class SeatGroup {
 		String name = JOptionPane.showInputDialog("취소자 성함을 입력하세요."); // 해당이름이 있는지 확인
 		for (int i = 0; i < seats.length; i++) {
 			if (seats[i].isOccupied() && seats[i].isMatched(name)) { // 해당좌석의 (점유여부)예약 여부 확인 && /같은 이름은 없다는 가정으로 품
-				seats[i].setName(null);// 이름이 없어지는게 취소(예약 안된자리 null)
+				seats[i].cancel();// 이름이 없어지는게 취소(예약 안된자리 null)
+//				seats[i].setName(null);// 이름이 없어지는게 취소(예약 안된자리 null)
 				JOptionPane.showMessageDialog(null, "예약자" + name + "의 예약이 최소되었습니다.");
 				return true;
 
