@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -382,8 +383,55 @@ public class MainClass {
 	}
 		
 	}
+	
+	public static void ex06() { // 연습(이미지 파일이 아닌, 텍스트 파일 다운)
+		
+		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		BufferedReader in = null;
+
+		FileWriter out = null;
+		
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection();
+			
+			int responseCode = con.getResponseCode();
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				
+				in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			} else {
+				in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+			
+			StringBuilder sb = new StringBuilder();
+			char [] cbuf = new char[i];
+			int readCount = 0;
+			
+			while((readCount = Reader.in(cbuf)) != -1) {
+				sb.append(cbuf, 0, readCount);
+				
+				
+			}
+			
+			
+			
+			
+		}
+
+		
+		
+		
+		
+		
+		
+	}
+	
 public static void main(String[] args) {
-	ex05();
+	ex06();
 }
 
 }

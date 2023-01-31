@@ -1,26 +1,43 @@
 package practice101_Concert;
-
+/* 클래스만들기
+seat1 
+ */
 public class Seat {
-
-	private String name; // 시트 예약한 사람이름
-
-	public String getName() { // 예약 한 사람 화인
+	
+	private String name; //1
+	
+	// 생성자 //2 아래처럼 만들거나, getter setter 이용해서 만들거나
+	/*public Seat() {} // new Seat() + setName함께 사용 / 호출 > 좌석 주인x
+	public Seat(String name) { // new Seat("홍길동") 호출 > 좌석 주인o
+		this.name = name; 
+}*/
+	// getter setter //2
+	public String getName() { //name 확인용 메소드(예약자 확인용)불러오기위해(private때문에)
 		return name;
 	}
-
-	public void setName(String name) { // 예약
+	public void setName(String name) { //name 저장용 메소드(예약 처리용) 변경해주기위해(private)
 		this.name = name;
 	}
 
-	public void cancel() { // 예약 취소
-		name = null;
+	//3
+	public boolean isOccupied() { // 좌석이 점유되었으면 true반환
+ 		return name != null; // 아래 if문과 동일한 식
+	/*	if(name == null) {
+			return false; // 점유되어 있지 않다.
+		} else {
+			return true; // 점유되어 있다.
+			
+		} */
 	}
-
-	public boolean isOccupied() {// 예약 여부 확인(boolean 트루 펄스 값 )
-		return name != null;// null이 아니면 true 반환(예약되어있으면 true 반환 이름이 있으면)
-	}
-	// 예약자 확인
-	public boolean isMatched(String name) { // isMatched 호출시 넘어온 값 name에 담아준다
-		return name.equals(this.name); //   ㄴ 해당 이름과 (시트 예약한 사람이름) 이름을 비교
-}
+	// 4 이름 비교
+	public boolean isMatched(String name) { // 좌석의 name(필드)과 매개변수 String name이름을 받아와서 
+		return name.equals(this.name); // 아래 if문과 동일한 식
+		/*	if(this.name.equals(name)) {//좌석의 이름 주인
+			return true;
+		} else {
+			return false;
+		} 
+		}*/
+		}
+	
 }
