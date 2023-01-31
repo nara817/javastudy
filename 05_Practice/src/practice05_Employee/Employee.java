@@ -36,6 +36,7 @@ public abstract class Employee {  // 추상 메소드를 가졌기 때문에 추
 		System.out.print("[사원번호:" + empNo + ", 사원명:" + name + "]");
 	}
 	
+	//getPay (추상abstract메소드 구현부가 없음)
 	public abstract int getPay();  // 모든 사원들의 월급을 반환하는 추상 메소드. 정규/비정규에 따라 계산법이 다르기 때문에 추상 메소드로 작성
 	
 }

@@ -4,8 +4,10 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -112,58 +114,196 @@ public class MainClass2 {
 
 	}
 	public static void ex03() { // 다운로드 프로그램(바이트파일을 대상했으므로, 모든파일 가능)
-	// BufferedInputStream 사용하여속도 향상 
-			
+	
 	// 다음 로고 이미지(이미지 주소로 복사)
 	String apiURL = "https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png";
 	URL url = null;
 	HttpURLConnection con = null;
 	
-	BufferedInputStream in = null; // 이미지(다음 로고) Daum 로그를 읽어 들이는 입력 스트림
+	InputStream in = null; // 이미지(다음 로고) Daum 로그를 읽어 들이는 입력 스트림
 	
-	// 파일(디렉터리 작업)
-	BufferedOutputStream out = null;// C:\storage\daum.png로 내보내는 출력 스트림
-	File file = new File("C:" + File.separator + "storge","daum.png");
+	// 파일작업
+	FileOutputStream out = null;// C:\storage\daum.png로 내보내는 출력 스트림
 	
-		
+	
+	
 	try {
 		
 		url = new URL(apiURL);
 		con = (HttpURLConnection) url.openConnection();
 		
 		int responseCode = con.getResponseCode();
-		if(responseCode == HttpURLConnection.HTTP_OK) {
+		if(responseCode == HttpURLConnection.HTTP_OK) { // 접속 되었다면 작업을 수행하겠다
 			
-			in = new BufferedInputStream(con.getInputStream());
-			out = new BufferedOutputStream(new FileOutputStream(file));
+			in = con.getInputStream();
+			out = new FileOutputStream("C:" + File.separator + "storage" + File.separator + "daum.png");
+									//ㄴ 파일 클래스 없이, 스트림값을 전달하여 처리
 			
 			byte[] b = new byte[10];
-			int readByte = 0;
+			int readByte = 0; // 10바이트 읽기로 했지만, 10바이트가 아닐 수 있으니 readByte 필요
 			
 			while((readByte = in.read(b)) != -1) {
-				out.write(b, 0, readByte);
+				out.write(b, 0, readByte); // b배열의 인덱스 0부터 readByte 만큼만
 			}
-				System.out.println("다운로드 완료");
+			
+			System.out.println("다운로드 완료");
+			
+			out.close();
+			in.close();
+			con.disconnect();
+		}
+	} catch(MalformedURLException e) {
+		System.out.println("apiURL 주소 오류");
+	} catch (IOException e) {
+		// 접속 실패 또는 스트림 관련 오류
+		e.printStackTrace();
+	}
+}
+	public static void ex03_1() { // ex03 문제 동일 BufferedInputStream 사용하여속도 향상 
+		
 				
-				out.close();
-				in.close();
-				con.disconnect();
+		// 다음 로고 이미지(이미지 주소로 복사)
+		String apiURL = "https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png";
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		BufferedInputStream in = null; // 이미지(다음 로고) Daum 로그를 읽어 들이는 입력 스트림
+		
+		// 파일(디렉터리 작업)
+		BufferedOutputStream out = null;// C:\storage\daum.png로 내보내는 출력 스트림
+		File file = new File("C:" + File.separator + "storge","daum.png"); 
+		
+			
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection(); // HttpURLConnection 캐스팅
+			
+			int responseCode = con.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				
+				in = new BufferedInputStream(con.getInputStream());
+				out = new BufferedOutputStream(new FileOutputStream(file));
+				
+				byte[] b = new byte[10];
+				int readByte = 0;
+				
+				while((readByte = in.read(b)) != -1) {
+					out.write(b, 0, readByte);
+				}
+					System.out.println("다운로드 완료");
+					
+					out.close();
+					in.close();
+					con.disconnect();
+				}
+			} catch(MalformedURLException e) {
+				System.out.println("apiURL 주소 오류");
+			} catch(IOException e) {
+				e.printStackTrace();
 			}
-		} catch(MalformedURLException e) {
+		}
+	public static void ex04() { // 문서 내려받기
+		
+		String apiURL = "https://gdlms.cafe24.com/uflist/curri/10004/bbs/68_63d8848f7d506.txt";
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		InputStreamReader reader = null; // 읽어 들이는 리더가 필요
+		FileWriter Writer = null; // 파일과 연결 라이터 필요
+		File file = new File("C:" + File.separator + "storage","다운로드문서.txt");
+		
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection();
+			
+			int responseCode = con.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				// Connection Reader와 Writer 사용x > IntputStreamReader(바이르 입력 스트립을 문자 입력 스트림으로 변환)
+	/*★★*/		reader = new InputStreamReader(con.getInputStream());  // 문자스트림은 char 변환 필요 / 성공했을땐 정상스트림
+			} else {
+				reader = new InputStreamReader(con.getErrorStream()); // ErrorStream 콘솔창에 출력시, / 아닌경우 에러스트림을 만들겠다.
+			}
+			
+			// 파일 복사 다운로드 프로그램 
+			StringBuilder sb = new StringBuilder();
+			char[] cbuf = new char[2]; // 2글자씩 읽어라
+			int readCount = 0; // 실제로 읽어들인 글자수
+			
+			
+			while ((readCount = reader.read(cbuf)) != -1) {
+				sb.append(cbuf, 0, readCount); // 인덱스 0부터 readCount 만큼만 사용하겠다
+			}
+
+			Writer = new FileWriter(file);
+			Writer.write(sb.toString());
+
+			Writer.close();
+			reader.close();
+			con.disconnect();
+			
+			System.out.println("다운로드 완료");
+			
+		} catch (MalformedURLException e) {
 			System.out.println("apiURL 주소 오류");
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
-	public static void ex04() {
-	
+public static void ex04_1() { // ex03 문제 동일 BufferedInputStream 사용하여속도 향상
 		
+		String apiURL = "https://gdlms.cafe24.com/uflist/curri/10004/bbs/68_63d8848f7d506.txt";
+		URL url = null;
+		HttpURLConnection con = null;
 		
+		InputStreamReader reader = null; // 읽어 들이는 리더가 필요
+		FileWriter Writer = null; // 파일과 연결 라이터 필요
+		File file = new File("C:" + File.separator + "storage","다운로드문서.txt");
+		
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection();
+			
+			int responseCode = con.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				// Connection Reader와 Writer 사용x > IntputStreamReader(바이르 입력 스트립을 문자 입력 스트림으로 변환)
+	/*★★*/		reader = new InputStreamReader(con.getInputStream());  // 문자스트림은 char 변환 필요 / 성공했을땐 정상스트림
+			} else {
+				reader = new InputStreamReader(con.getErrorStream()); // ErrorStream 콘솔창에 출력시, / 아닌경우 에러스트림을 만들겠다.
+			}
+			
+			// 파일 복사 다운로드 프로그램 
+			StringBuilder sb = new StringBuilder();
+			char[] cbuf = new char[2]; // 2글자씩 읽어라
+			int readCount = 0; // 실제로 읽어들인 글자수
+			
+			
+			while ((readCount = reader.read(cbuf)) != -1) {
+				sb.append(cbuf, 0, readCount); // 인덱스 0부터 readCount 만큼만 사용하겠다
+			}
+
+			Writer = new FileWriter(file);
+			Writer.write(sb.toString());
+
+			Writer.close();
+			reader.close();
+			con.disconnect();
+			
+			System.out.println("다운로드 완료");
+			
+		} catch (MalformedURLException e) {
+			System.out.println("apiURL 주소 오류");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
-	
-	
+
 	public static void main(String[] args) {
-		ex03();
+		ex04();
 
 	}
 
