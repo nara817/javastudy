@@ -37,7 +37,7 @@ public class SeatGroup {
 		String name = sc.next();
 		seats[seatNo - 1].setName(name); // 예약 진행되었으니, -1(배열은 0번부터 시작, 좌석은 1번부터 시작하기때문에 -1 해줌 동일)
 		System.out.println(seatNo + "번 좌석 예약이 완료되었습니다.");
-		return true; // 
+		return true; 
 	}
 	
 	// 예약 취소
