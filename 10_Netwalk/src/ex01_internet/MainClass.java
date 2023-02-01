@@ -386,47 +386,53 @@ public class MainClass {
 	
 	public static void ex06() { // 연습(이미지 파일이 아닌, 텍스트 파일 다운)
 		
+
+		// 1시간마다 갱신되는 전국 날씨 정보
 		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
 		URL url = null;
 		HttpURLConnection con = null;
 		
-		BufferedReader in = null;
-
-		FileWriter out = null;
+		BufferedReader reader = null;
+		BufferedWriter writer = null;
+		File file = null;
 		
 		try {
 			
 			url = new URL(apiURL);
 			con = (HttpURLConnection) url.openConnection();
 			
+			String message = null;
 			int responseCode = con.getResponseCode();
-			if (responseCode == HttpURLConnection.HTTP_OK) {
-				
-				in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				file = new File("C:" + File.separator + "storage", "sfc_web_map.xml");
+				message = "다운로드 성공";
 			} else {
-				in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+				reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+				file = new File("C:" + File.separator + "storage", "다운로드실패.html");
+				message = "다운로드 실패";
 			}
 			
 			StringBuilder sb = new StringBuilder();
-			char [] cbuf = new char[i];
-			int readCount = 0;
-			
-			while((readCount = Reader.in(cbuf)) != -1) {
-				sb.append(cbuf, 0, readCount);
-				
-				
+			String line = null;
+			while((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
 			}
 			
+			writer = new BufferedWriter(new FileWriter(file));
+			writer.write(sb.toString());
 			
+			writer.close();
+			reader.close();
+			con.disconnect();
 			
+			System.out.println(message);
 			
+		} catch(MalformedURLException e) {
+			System.out.println("apiURL 주소 오류");
+		} catch(IOException e) {
+			e.printStackTrace();
 		}
-
-		
-		
-		
-		
-		
 		
 	}
 	

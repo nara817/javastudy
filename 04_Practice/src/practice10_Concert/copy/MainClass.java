@@ -1,4 +1,4 @@
-package practice10_Concert;
+package practice10_Concert.copy;
 
 public class MainClass {
 
