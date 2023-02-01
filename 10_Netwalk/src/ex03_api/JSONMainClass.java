@@ -81,19 +81,18 @@ public class JSONMainClass {
 				// 서비스키 serviceKey
 				
 				String serviceKey = "bEQBRPHjt0tZrc7EsL0T8usfsZ1+wT+5jqamBef/ErC/5ZO6N7nYdRmrwR91bh5d3I1AQeY5qdbJOF6Kv0U1CQ=="; // 일반 인증키(Decoding)값
-				String apiURL = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustWeekFrcstDspth"; // 요청주소
+				String apiURL = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustWeekFrcstDspth";
 				URL url = null;
 				HttpURLConnection con = null;
 				BufferedReader reader = null;
 				
 				try {
 					
-					String sidoName = "서울";
 					StringBuilder sbURL = new StringBuilder();
 					sbURL.append(apiURL);
-					sbURL.append("?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8")); // 요청변수 필수값
-					sbURL.append("&returnType=json"); // 필수값은아니지만, json타입으로 무조건 해야함
-					sbURL.append("&searchDate=2023-01-30"); // 조회날짜 샘플데이터 참고 2020-11-09
+					sbURL.append("?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8"));
+					sbURL.append("&returnType=json");
+					sbURL.append("&searchDate=2023-01-30");
 					
 					url = new URL(sbURL.toString());
 					con = (HttpURLConnection) url.openConnection();
@@ -116,25 +115,17 @@ public class JSONMainClass {
 					reader.close();
 					con.disconnect();
 					
-					System.out.println(sb.toString());
-					JSONObject obj = new JSONObject(sb.toString());
-					JSONObject body = obj.getJSONObject("response").getJSONObject("body");
-					JSONArray items = body.getJSONArray("items");
-					
+					JSONArray items = new JSONObject(sb.toString())
+										.getJSONObject("response")
+										.getJSONObject("body")
+										.getJSONArray("items");
 					for(int i = 0; i < items.length(); i++) {
-						JSONObject item = items.getJSONObject(i); // i를 하나씩 꺼내오기 / JSONObject타입을 가져올땐 캐스팅 필요
-						String presnatnDt = item.getString("presnatnDt");
-						String frcstOneCn = item.getString("frcstOneCn");
-						String frcstOneDt = item.getString("frcstOneDt");
-						String frcstThreeCn = item.getString("frcstThreeCn");
-						String frcstFourCn = item.getString("frcstFourCn");
-
-						//System.out.println(presnatnDt + ": 첫째날예보 -" + frcstOneCn + ", 둘째날예보 - " + frcstOneDt + ", 셋째날예보 - " + frcstFourCn + ", 넷째날예보 - ");
-						
-						
-						
+						JSONObject item = items.getJSONObject(i);
+						System.out.println(item.getString("frcstOneDt") + " : " + item.getString("frcstOneCn"));
+						System.out.println(item.getString("frcstTwoDt") + " : " + item.getString("frcstTwoCn"));
+						System.out.println(item.getString("frcstThreeDt") + " : " + item.getString("frcstThreeCn"));
+						System.out.println(item.getString("frcstFourDt") + " : " + item.getString("frcstFourCn"));
 					}
-					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
