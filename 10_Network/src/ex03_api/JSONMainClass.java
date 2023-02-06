@@ -22,7 +22,7 @@ public class JSONMainClass {
 		try {
 			
 			String sidoName = "서울";
-			StringBuilder sbURL = new StringBuilder();
+			StringBuilder sbURL = new StringBuilder(); // 객체 선언(StringBuilder 문자열을 빠르게 읽어내기 떄문에 사용?)
 			sbURL.append(apiURL);
 			sbURL.append("?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8")); // 요청변수 필수값
 			sbURL.append("&returnType=json"); // 필수값은아니지만, json타입으로 무조건 해야함
