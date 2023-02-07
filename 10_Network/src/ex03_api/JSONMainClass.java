@@ -22,16 +22,16 @@ public class JSONMainClass {
 		try {
 			
 			String sidoName = "서울";
-			StringBuilder sbURL = new StringBuilder(); // 객체 선언(StringBuilder 문자열을 빠르게 읽어내기 떄문에 사용?)
+			StringBuilder sbURL = new StringBuilder(); //String 문장을 이어 붙일 수 없기 때문에 StringBuilder선언(객체append+객체append)
 			sbURL.append(apiURL);
-			sbURL.append("?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8")); // 요청변수 필수값
+			sbURL.append("?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8")); // 요청변수 필수값serviceKey 
 			sbURL.append("&returnType=json"); // 필수값은아니지만, json타입으로 무조건 해야함
 			sbURL.append("&sidoName=" + URLEncoder.encode(sidoName, "UTF-8")); // 요청변수 필수값
 			
-			url = new URL(sbURL.toString());
-			con = (HttpURLConnection) url.openConnection();
-			
-			con.setRequestMethod("GET");
+			url = new URL(sbURL.toString()); // URL을 문자열로 반환
+			con = (HttpURLConnection) url.openConnection(); // openConnection > URL패키지 클레스에 url 생성, 정보를 가져오기위해
+			// HttpURLConnection 에 con 생성,  con에서 url메소드 HttpURLConnection 메소드를 쓰기위해서
+			con.setRequestMethod("GET"); // 
 			con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
 			
 			if(con.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -60,10 +60,7 @@ public class JSONMainClass {
 				String stationName = item.getString("stationName");
 				String pm10Value = item.getString("pm10Value");
 				String o3Value = item.getString("o3Value");
-				System.out.println(stationName + ": 미세먼지 -" + pm10Value + ", 오존농도 - " + o3Value);
-				
-				
-				
+				System.out.println(stationName + ": 미세먼지 -" + pm10Value + ", 오존농도 - " + o3Value);				
 			}
 			
 			
