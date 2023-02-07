@@ -23,14 +23,19 @@ import org.w3c.dom.Text;
 public class MainClass {
 
 	/*
-	 * URl 1. uniform Resource Locator 2. 정형화된 자원의 경로 3. 실제로는 웹 주소를 의미한다.(인터넷주소) 4.
-	 * 구성 포로토콜:// 호스트 / 서버경로 ?파라미터=값&파라미터=값&...
+	 * URl 1. uniform Resource Locator 
+	 * 2. 정형화된 자원의 경로 
+	 * 3. 실제로는 웹 주소를 의미한다.(인터넷주소) 
+	 * 4. 구성 포로토콜:// 호스트 / 서버경로 ?파라미터=값&파라미터=값&...
 	 * https://search.naver.com/search.naver?where=nexearch&sm=top_sug.pre&fbm=0&acr
 	 * =9&acq=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90&qdt=0&ie=utf8&query=삼성전자
-	 * HyperText Transfer Protocol secure 1) 프로토콜 : 통신규약, https(secure(=인증서) + http
-	 * : 보안처리된 하이퍼텍스트 전송 프로토콜) 2) 호스트 : 서버의 대표 주소 3) 서버경로 : URL Mapping(URL Pattern)
-	 * → 개발자가 만드는 경로 / 서버를 빌리는거(=호스팅서비스) ?은 하나만 나올 수 있음, 2개가 있으면 잘못된 주소 4) 파라미터 :
-	 * 서버로 보내는 데이터를 의미(변수라고 생각하면 된다.)(주소?...&...&...&) where=nexearch → 첫번째 파라미터
+	 * HyperText Transfer Protocol secure 
+	 * 1) 프로토콜 : 통신규약, https(secure(=인증서) + http : 보안처리된 하이퍼텍스트 전송 프로토콜) 
+	 * 2) 호스트 : 서버의 대표 주소 
+	 * 3) 서버경로 : URL Mapping(URL Pattern)
+	 * → 개발자가 만드는 경로 / 서버를 빌리는거(=호스팅서비스) ?은 하나만 나올 수 있음, 2개가 있으면 잘못된 주소 
+	 * 4) 파라미터 : 서버로 보내는 데이터를 의미(변수라고 생각하면 된다.)
+	 * (주소?...&...&...&) where=nexearch → 첫번째 파라미터
 	 * requst.getParnater("where") query 이하는 → 삼성전자의 인코딩된 데이터 호스트 / 서버경로 ? 파라미터
 	 * query
 	 */
