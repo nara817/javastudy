@@ -178,7 +178,8 @@ public class MainClass {
 			StringBuilder sb = new StringBuilder();
 			while((line = br.readLine()) != null) { // -1이 아닌 null / 글자 배열이 정해진게x
 				sb.append(line);
-			}
+			} 
+			
 			
 			System.out.println(sb.toString());
 
