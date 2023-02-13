@@ -10,12 +10,12 @@ import java.net.URLEncoder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-public class ApiMain {
+// 테스트_보충
+public class Ap {
 
 	public static void main(String[] args) {
 		String serviceKey = "u5NYolr9xhMJVumYYhOWVBgfivzHscgIUbweuM3c7Eim3n2QFG35by9KMCobAwYMcPyQjTyt/etTOG37cclejw==";
-		String apiURL = "http://apis.data.go.kr/B552061/AccidentDeath/getRestTrafficAccidentDeath"; // 요청주소
+		String apiURL = "http://apis.data.go.kr/B552061/AccidentDeath/getRestTrafficAccidentDeath";
 
 		URL url = null;
 		HttpURLConnection con = null;
