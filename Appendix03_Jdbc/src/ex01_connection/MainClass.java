@@ -1,8 +1,12 @@
 package ex01_connection;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class MainClass {
 	
@@ -57,9 +61,71 @@ public class MainClass {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}		
+	}	
+	public static void ex03() {
+		
+		// 프로퍼티 파일 읽는 문자 입력 스트림 생성하기
+		BufferedReader reader = null;
+		Connection con = null;
+				
+		try {
+			
+			reader = new BufferedReader(new FileReader("db.properties"));
+			
+			// 프로퍼티 파일을 읽어서 사용자 정보 처리하기
+			// 프로퍼티 파일을 읽어서 프로퍼티 객체 생성하기
+			Properties properties = new Properties();
+			//ㄴ 자바 유틸을 읽는 클래스
+			// 메소드를 따로 부름
+			properties.load(reader);
+			
+			// 프로퍼티 객체에 저장된 각 property 읽기
+			String url = properties.getProperty("url");
+			String user = properties.getProperty("user");
+			String password = properties.getProperty("password");
+			
+			// DriverManager로부터 Connection 객체 얻기
+			con = DriverManager.getConnection(url, user, password); // getConnection 에러 > SQLException  필요
+			System.out.println("DB에 접속되었습니다.");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	public static Connection getConnection () { // Connection 반환메소드
+												//getConnection 호출하면, Connection 옴
+		
+		Connection con = null;
+		
+		try {
+			
+			Class.forName("oracle.jdbc.OracleDriver");
+			
+			Properties properties = new Properties();
+			properties.load(new BufferedReader(new FileReader("db.properties")));
+
+			con = DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("user"),
+					properties.getProperty("password"));
+
+		} catch (Exception e) { // ClassNotFoundException, SQLException, IOException
+			e.printStackTrace();
+		}
+		return con; // finally, con.close 하면안됨 따로 만들어야함(닫으면 안됨)
+	}
 	public static void main(String[] args) {
-		ex02(); 
+		Connection con = getConnection();
+		System.out.println("DB에 접속되었습니다.");
+		// 닫으려면, 여기서 con.close + 예외처리필요
 
 	}
 
