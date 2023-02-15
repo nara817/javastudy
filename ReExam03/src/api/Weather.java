@@ -26,7 +26,8 @@ public class Weather {
 	}
 	@Override
 	public String toString() {
-		return "온도" + temp + "°" +" 날씨" + wfKor + "시간" + hour + "\n";
+		//return "온도" + temp + "" +" 날씨" + wfKor + "시간" + hour + "\n";
+		return  hour +"시, " + temp + "도, " + wfKor + "\n";
 	}
 	
 	
