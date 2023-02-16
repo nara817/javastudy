@@ -22,7 +22,7 @@ public class MainClass {
 			System.out.println("클래스가 로드되었습니다.");
 			
 			
-		} catch(ClassNotFoundException e) {	// 클래스 못찾았다는 예외
+		} catch(ClassNotFoundException e) {	// 클래스 못찾았다는 예외(ClassNotfound예외)
 			e.printStackTrace();
 		}
 
