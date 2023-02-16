@@ -148,7 +148,7 @@ public class MainClass {
 			while(rs.next()) { 
 				
 				// 결과 행의 각 칼럼 정보 읽기 Member 객체 만들기
-				Member member = new Member(); // 선언+생성
+				Member member = new Member(); //  선언+생성 > Member클래스 호출
 				member.setMember_no(rs.getInt("MEMBER_NO") );
 				member.setId(rs.getString("ID") );
 				member.setName(rs.getString("NAME") );
